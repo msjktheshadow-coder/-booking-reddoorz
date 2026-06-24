@@ -2,42 +2,56 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Booking RedDoorz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking RedDoorz - MrRedoorz Coder</title>
     <style>
-        body { font-family: sans-serif; max-width: 400px; margin: 20px auto; padding: 20px; }
-        input, select, button { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; }
-        button { background-color: #25D366; color: white; border: none; cursor: pointer; font-weight: bold; }
+        body { font-family: sans-serif; max-width: 400px; margin: 20px auto; padding: 20px; background-color: #f4f4f4; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { color: #d32f2f; text-align: center; margin-bottom: 5px; }
+        .sub-title { text-align: center; color: #555; font-size: 14px; margin-bottom: 20px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #25D366; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-weight: bold; border-radius: 4px; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #128C7E; }
     </style>
 </head>
 <body>
+
+<div class="container">
     <h2>Form Booking RedDoorz</h2>
+    <div class="sub-title">Agen Resmi: mrredoorz@gmail.com</div>
+    
     <form id="bookingForm">
         <input type="text" id="fName" placeholder="Nama Depan" required>
         <input type="text" id="lName" placeholder="Nama Belakang" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="tel" id="hp" placeholder="Nomor HP" required>
-        <input type="text" id="hotel" placeholder="Nama Hotel RedDoorz" required>
-        <button type="submit">Kirim Pesanan ke WhatsApp</button>
+        <!-- Nilai email otomatis diisi dengan email baru Anda, pembeli tinggal verifikasi atau ganti jika perlu -->
+        <input type="email" id="email" value="mrredoorz@gmail.com" placeholder="Email Konfirmasi" required>
+        <input type="tel" id="hp" placeholder="Nomor HP Penumpang / Tamu" required>
+        <input type="text" id="hotel" placeholder="Nama Hotel RedDoorz Tujuan" required>
+        
+        <button type="submit">Kirim Pesanan ke WhatsApp Agent</button>
     </form>
+</div>
 
-    <script>
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const fName = document.getElementById('fName').value;
-            const lName = document.getElementById('lName').value;
-            const email = document.getElementById('email').value;
-            const hp = document.getElementById('hp').value;
-            const hotel = document.getElementById('hotel').value;
-            
-            const message = `Halo Agent, saya ingin memesan kamar:%0A%0A` +
-                            `Nama: ${fName} ${lName}%0A` +
-                            `Email: ${email}%0A` +
-                            `No. HP: ${hp}%0A` +
-                            `Hotel: ${hotel}`;
-            
-            window.location.href = `https://wa.me/6287830226641?text=${message}`;
-        });
-    </script>
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const fName = document.getElementById('fName').value;
+        const lName = document.getElementById('lName').value;
+        const email = document.getElementById('email').value;
+        const hp = document.getElementById('hp').value;
+        const hotel = document.getElementById('hotel').value;
+        
+        // Format teks yang akan dikirimkan ke WhatsApp Agen
+        const message = `Halo Agent, saya ingin memesan kamar:%0A%0A` +
+                        `Nama: ${fName} ${lName}%0A` +
+                        `Email Agen: ${email}%0A` +
+                        `No. HP Tamu: ${hp}%0A` +
+                        `Hotel RedDoorz: ${hotel}`;
+        
+        // Membuka WhatsApp Agent 087830226641
+        window.location.href = `https://wa.me/6287830226641?text=${message}`;
+    });
+</script>
+
 </body>
 </html>
-
